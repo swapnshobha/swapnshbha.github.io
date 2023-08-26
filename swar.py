@@ -152,3 +152,5 @@ with st.expander('Analyze CSV'):
             file_name='sentiment.csv',
             mime='text/csv',
         )
+
+!streamlit run app.py
