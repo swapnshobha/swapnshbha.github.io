@@ -15,6 +15,7 @@ sid = SentimentIntensityAnalyzer()
 lemmatizer = WordNetLemmatizer()
 
 def cleaner(text):
+    # ... (same as your original code)
 
 def preprocess_text(text):
     # ... (same as your original code)
@@ -77,4 +78,3 @@ if clean_input:
     # Display cleaned and preprocessed text
     st.write('Cleaned Text:', cleaned_text)
     st.write('Preprocessed Text:', preprocessed_text)
-
