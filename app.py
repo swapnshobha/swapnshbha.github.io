@@ -1,3 +1,5 @@
+import nltk
+nltk.download('vader_lexicon')
 import streamlit as st
 import pandas as pd
 import re
@@ -7,6 +9,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import string
+
 
 # Initialize the SentimentIntensityAnalyzer
 sid = SentimentIntensityAnalyzer()
