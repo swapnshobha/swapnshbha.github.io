@@ -84,3 +84,36 @@ if clean_input:
     # Display cleaned and preprocessed text
     st.write('Cleaned Text:', cleaned_text)
     st.write('Preprocessed Text:', preprocessed_text)
+with st.expander('Analyze CSV'):
+    upl = st.file_uploader('Upload file')
+
+    if upl:
+        df = pd.read_csv(upl)
+
+        # ... (your score and analyze functions)
+
+        df['score'] = df['reviews.text'].apply(score)
+        df['analysis'] = df['score'].apply(analyze)
+        st.write(df.head(10))
+
+        @st.cache
+        def convert_df(df):
+            return df.to_csv(index=False).encode('utf-8')
+
+        csv = convert_df(df)
+
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='sentiment.csv',
+            mime='text/csv'
+        )
+
+# Streamlit app header
+st.header('Open tableau')
+
+# URL to open
+link_url = "https://public.tableau.com/views/updatedproject_16930187945980/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
+
+
+st.markdown(f'[Click here to open]({link_url})')
