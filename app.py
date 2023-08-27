@@ -1,5 +1,7 @@
 import nltk
 nltk.download('vader_lexicon')
+nltk.download('wordnet')
+nltk.download('punkt')
 import streamlit as st
 import pandas as pd
 import re
