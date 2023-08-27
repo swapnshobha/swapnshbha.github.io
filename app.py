@@ -15,10 +15,29 @@ sid = SentimentIntensityAnalyzer()
 lemmatizer = WordNetLemmatizer()
 
 def cleaner(text):
-    # ... (same as your original code)
 
 def preprocess_text(text):
     # ... (same as your original code)
+    if isinstance(text, str):
+        # Apply the 'cleaner' function
+        cleaned_text = cleaner(text)
+
+        # Tokenization
+        tokens = word_tokenize(cleaned_text)
+
+        # Remove punctuation
+        tokens = [token for token in tokens if token not in string.punctuation]
+
+        # Remove stopwords
+        stop_words = set(stopwords.words('english'))
+        tokens = [token for token in tokens if token not in stop_words]
+
+        # Reconstruct preprocessed text
+        preprocessed_text = ' '.join(tokens)
+        return preprocessed_text
+    else:
+        # If the input is not a string, return an empty string
+        return ''
 
 # Streamlit app header
 st.header('Sentiment Analysis')
@@ -58,3 +77,4 @@ if clean_input:
     # Display cleaned and preprocessed text
     st.write('Cleaned Text:', cleaned_text)
     st.write('Preprocessed Text:', preprocessed_text)
+
